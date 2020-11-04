@@ -3,6 +3,7 @@ package lib
 import (
 	"math/rand"
 	"strconv"
+	"time"
 )
 
 type Generator struct {
@@ -15,6 +16,7 @@ func (gen *Generator) Init(operator string, limit int) {
 	gen.Range = limit
 }
 func (gen *Generator) Generate(Operand int) string {
+	rand.Seed(time.Now().UTC().UnixNano())
 	switch gen.Operator {
 	case "+":
 		ret := ""
